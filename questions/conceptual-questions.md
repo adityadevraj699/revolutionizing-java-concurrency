@@ -55,7 +55,7 @@ If any child task fails, the whole structure can be cancelled or managed togethe
 - Easier error propagation  
 - Cleaner and more readable code  
 
----
+
 
 ### 💡 Example:
 
@@ -83,7 +83,7 @@ They provide a safer, more efficient alternative to `ThreadLocal` and are design
 | Risk of leaks   | Yes                      | No                           |
 | Performance     | Moderate                 | Better (contextually scoped) |
 
----
+
 
 ### 💡 Example:
 
@@ -106,7 +106,7 @@ Virtual threads are most effective in **I/O-bound tasks**, where the thread spen
 
 These scenarios allow the JVM to efficiently switch between threads without blocking system resources.
 
----
+
 
 ### ✅ Ideal Scenarios for Virtual Threads:
 - Handling thousands of simultaneous web/API requests  
@@ -114,7 +114,7 @@ These scenarios allow the JVM to efficiently switch between threads without bloc
 - College ERP portals (e.g., during result login or registration peak)  
 - IRCTC ticket booking systems under high traffic  
 
----
+
 
 ### ❌ Not Suitable For:
 Virtual threads are **not ideal** for tasks that require constant CPU usage (i.e., CPU-bound tasks), such as:
@@ -124,7 +124,7 @@ Virtual threads are **not ideal** for tasks that require constant CPU usage (i.e
 
 In such cases, **platform threads or thread pools** may perform better.
 
----
+
 
 ### 💡 Summary Table:
 
@@ -140,7 +140,7 @@ In such cases, **platform threads or thread pools** may perform better.
 
 In concurrent programming, understanding the nature of a task helps in choosing the right threading model (e.g., virtual vs platform threads).
 
----
+
 
 ### 📊 Comparison Table:
 
@@ -149,7 +149,7 @@ In concurrent programming, understanding the nature of a task helps in choosing 
 | I/O-bound   | Spends most time waiting   | HTTP requests, DB queries, file I/O       |
 | CPU-bound   | Consumes constant CPU time | Encryption, video processing, simulations |
 
----
+
 
 ### 💡 I/O-bound Example:
 ```java
@@ -162,7 +162,7 @@ Thread.sleep(200); // Simulates network delay or I/O wait
 
 Java’s concurrency model has significantly evolved to simplify multi-threaded programming, enhance performance, and provide better abstractions.
 
----
+
 
 ### 📈 Evolution Timeline:
 
@@ -174,7 +174,7 @@ Java’s concurrency model has significantly evolved to simplify multi-threaded 
 | Java 8       | `CompletableFuture`                                    | Asynchronous, non-blocking operations   |
 | Java 21      | `Virtual Threads`, `Structured Concurrency`, `Scoped Values` | Lightweight concurrency, simpler code |
 
----
+
 
 ### ✅ Summary:
 
@@ -194,7 +194,7 @@ Java now supports writing **scalable and clean concurrent applications** with mi
 
 Project Loom aims to modernize Java concurrency model by making it easier to write scalable and maintainable concurrent applications.
 
----
+
 
 ### 🎯 Key Goals of Project Loom:
 
@@ -213,7 +213,6 @@ Project Loom aims to modernize Java concurrency model by making it easier to wri
   - Complex reactive streams
   - Callback hell
 
----
 
 ### 💡 Summary:
 
@@ -226,7 +225,7 @@ With virtual threads, Project Loom allows developers to write high-performance c
 
 Traditional (platform) threads in Java are mapped directly to operating system threads. This approach works for moderate workloads, but struggles in high-concurrency situations.
 
----
+
 
 ### ❌ Limitations of Traditional Threads:
 
@@ -241,7 +240,7 @@ Traditional (platform) threads in Java are mapped directly to operating system t
 
 - 🧵 **Thread-per-request model breaks down** under heavy load.
 
----
+
 
 ### 📉 Not Suitable For:
 
@@ -251,7 +250,7 @@ Traditional threads are not ideal for scenarios requiring **massive concurrency*
 - 🎓 **University Result Portals** – high login traffic at the same time  
 - 🛒 **Flash Sale Systems (Flipkart, Amazon)** – huge spikes in users hitting the server
 
----
+
 
 ### 🧩 Solution:
 
@@ -264,14 +263,14 @@ Virtual threads from **Project Loom** solve these issues by offering lightweight
 
 Yes — one of the biggest advantages of **virtual threads** is that they are **fully compatible with existing Java code and APIs**.
 
----
+
 
 ### ✅ Compatible With:
 - `Runnable` and `Callable` interfaces  
 - `ExecutorService` for task management  
 - **Synchronous/blocking I/O operations** (e.g., reading from InputStreams, JDBC queries)
 
----
+
 
 ### 💡 Key Benefit:
 
@@ -282,7 +281,7 @@ You can write **blocking-style code** (e.g., using `sleep()`, `read()`, `query()
 - Reactive Streams
 - External reactive libraries (like RxJava or Reactor)
 
----
+
 
 ### 🧪 Example:
 ```java
