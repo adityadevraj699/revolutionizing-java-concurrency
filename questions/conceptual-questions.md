@@ -41,7 +41,7 @@ Thread.startVirtualThread(() -> {
     System.out.println("Virtual thread");
 });
 
-```java
+```
 
 ---
 
@@ -66,7 +66,7 @@ try (var scope = StructuredTaskScope.ShutdownOnFailure.open()) {
     scope.join(); // Wait for all
     System.out.println(user.resultNow() + " - " + order.resultNow());
 }
-```java
+```
 
 ---
 
@@ -93,7 +93,7 @@ ScopedValue<String> userId = ScopedValue.newInstance();
 ScopedValue.where(userId, "u123").run(() -> {
     System.out.println("User ID: " + userId.get());
 });
-```java
+```
 
 ---
 
@@ -154,7 +154,7 @@ In concurrent programming, understanding the nature of a task helps in choosing 
 ### 💡 I/O-bound Example:
 ```java
 Thread.sleep(200); // Simulates network delay or I/O wait
-```java
+```
 
 ---
 
@@ -289,6 +289,6 @@ You can write **blocking-style code** (e.g., using `sleep()`, `read()`, `query()
 Thread.startVirtualThread(() -> {
     System.out.println("This can include blocking code like I/O.");
 });
-```java
+```
 
 
