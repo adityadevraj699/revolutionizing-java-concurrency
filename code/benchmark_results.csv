@@ -1,0 +1,9 @@
+ThreadType,TaskCount,Duration(ms),Throughput(tasks/sec),Memory(KB)
+Platform,1000,374,2673,27665
+Virtual,1000,97,10309,31110
+Platform,5000,1643,3043,34269
+Virtual,5000,63,79365,10231
+Platform,10000,3290,3039,16375
+Virtual,10000,62,161290,29976
+Platform,20000,6385,3132,37379
+Virtual,20000,94,212765,57348
