@@ -1,22 +1,9 @@
-### 📊 Benchmark Results: Platform Threads vs Virtual Threads
-
-```markdown
-| Thread Type | Task Count | Duration (ms) | Throughput (tasks/sec) | Memory Usage (KB) |
-|-------------|------------|----------------|--------------------------|-------------------|
-| Platform    | 1,000      | 374            | 2,673                    | 27,665            |
-| Virtual     | 1,000      | 97             | 10,309                   | 31,110            |
-| Platform    | 5,000      | 1,643          | 3,043                    | 34,269            |
-| Virtual     | 5,000      | 63             | 79,365                   | 10,231            |
-| Platform    |10,000      | 3,290          | 3,039                    | 16,375            |
-| Virtual     |10,000      | 62             |161,290                   | 29,976            |
-| Platform    |20,000      | 6,385          | 3,132                    | 37,379            |
-| Virtual     |20,000      | 94             |212,765                   | 57,348            |
-```
-
----
-
-### ✅ Key Observations
-
-* 🔥 **Virtual threads** consistently outperform platform threads in **throughput** (up to 60× faster).
-* 💾 **Memory usage** is significantly lower in virtual threads at higher loads.
-* ⏱️ Virtual threads maintain **predictable performance** even at 20,000 tasks.
+ThreadType,TaskCount,Duration(ms),Throughput(tasks/sec),Memory(KB)
+Platform,1000,374,2673,27665
+Virtual,1000,97,10309,31110
+Platform,5000,1643,3043,34269
+Virtual,5000,63,79365,10231
+Platform,10000,3290,3039,16375
+Virtual,10000,62,161290,29976
+Platform,20000,6385,3132,37379
+Virtual,20000,94,212765,57348
