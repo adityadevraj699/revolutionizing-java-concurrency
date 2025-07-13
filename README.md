@@ -1,4 +1,3 @@
-
 # 🚀 Revolutionizing Java Concurrency with Virtual Threads (Project Loom)
 
 Welcome to the official GitHub documentation for the research project **"Revolutionizing Java Concurrency"**, focused on benchmarking and implementing **Virtual Threads** in Java 21+.
@@ -20,6 +19,49 @@ Key focus areas:
 - **Thread pinning and how to avoid it**
 - **Structured concurrency with `StructuredTaskScope`**
 - **Real-world simulation: Chat system, ERP login flood, ticket booking**
+
+---
+
+## 🧩 Virtual Thread Execution Flow – Project Loom (Java 21)
+
+> A visual flow of how Java 21’s virtual threads scale massively with fewer carrier threads.
+
+```text
+[Request 1]       [Request 2]       [Request 3]       [Request 4]
+    |                 |                 |                 |
+    |                 |                 |                 |
+    |                 |                 |                 |
+┌────────┐       ┌────────┐       ┌────────┐       ┌────────┐
+│Virtual │       │Virtual │       │Virtual │       │Virtual │
+│Thread 1│       │Thread 2│       │Thread 3│       │Thread 4│
+└────┬───┘       └────┬───┘       └────┬───┘       └────┬───┘
+     │                │                │                │
+     ▼                ▼                ▼                ▼
+┌────────────────────────────────────────────────────────────┐
+│           Carrier Thread Pool (2–5 platform threads)        │
+│ ┌────────────┐ ┌────────────┐ ┌────────────┐                │
+│ │ Carrier-1  │ │ Carrier-2  │ │ ...        │                │
+│ └────┬───────┘ └────┬───────┘ └────────────┘                │
+│      │              │                                        │
+│      ▼              ▼                                        │
+│   Executes      Executes                                     │
+│   V-Thread 1    V-Thread 2                                   │
+│   ⏳ I/O wait    ⏳ I/O wait                                  │
+│   ▼             ▼                                           │
+│   Releases     Releases (Unmounts)                          │
+│   Carrier      Carrier                                       │
+│      │              │                                        │
+│      ▼              ▼                                        │
+│   Assigned to   Assigned to                                  │
+│   V-Thread 3    V-Thread 4                                   │
+└────────────────────────────────────────────────────────────┘
+```
+## 🌀 How It Works
+
+- Virtual threads are lightweight (~4KB) and scheduled by the JVM.  
+- When I/O is encountered, they **unmount** from the carrier thread.  
+- Carriers are then reassigned to other ready virtual threads.  
+- This allows **millions of virtual threads** to run with just a **few platform (carrier) threads**.
 
 ---
 
@@ -49,7 +91,8 @@ For complete documentation, code walkthroughs, and live examples, visit the [�
 **Aditya Devraj**  
 Final Year Student, B.Tech CSE  
 Meerut Institute of Technology  
-📧 [aditya.kumar1.cs.2022@mitmeerut.ac.in](mailto:aditya.kumar1.cs.2022@mitmeerut.ac.in)
+📧 [aditya.kumar1.cs.2022@mitmeerut.ac.in](mailto:aditya.kumar1.cs.2022@mitmeerut.ac.in)  
+🌐 [Portfolio Website](https://adityadevraj699.online)
 
 ---
 
