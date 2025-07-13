@@ -1,6 +1,5 @@
 # 📁 Project Structure – Revolutionizing Java Concurrency
 
-=====================================
 
 ```yml
 revolutionizing-java-concurrency/
