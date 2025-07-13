@@ -22,10 +22,6 @@ Key focus areas:
 
 ---
 
-## 🧩 Virtual Thread Execution Flow – Project Loom (Java 21)
-
-> A visual flow of how Java 21’s virtual threads scale massively with fewer carrier threads.
-
 ## 🆚 Virtual Threads vs Traditional Threads – Execution Flow
 
 ```text
