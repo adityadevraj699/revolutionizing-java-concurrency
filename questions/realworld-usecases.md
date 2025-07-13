@@ -112,9 +112,10 @@ While traditional threads still serve in CPU-heavy scenarios, **hybrid models** 
 
 ---
 
-✅ **GitHub Repository**:  
-[🔗 Project Code and Benchmarks](https://github.com/adityadevraj699/revolutionizing-java-concurrency)
+## 📁 Related Resources
 
-📝 **Related Blog**:  
-[🔗 Next-Gen Java Concurrency with Project Loom](https://nextgenjavaconcurrency.adityadevraj699.online/)
+* 🔗 [GitHub Code: Virtual vs Platform Thread Benchmarks](https://github.com/adityadevraj699/revolutionizing-java-concurrency)
+* 🔗 [Blog: Next-Gen Java Concurrency Simplified](https://nextgenjavaconcurrency.adityadevraj699.online/)
+
+
 
