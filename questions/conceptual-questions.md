@@ -290,4 +290,12 @@ Thread.startVirtualThread(() -> {
 });
 ```
 
+---
+
+## 📁 Related Resources
+
+* 🔗 [GitHub Code: Virtual vs Platform Thread Benchmarks](https://github.com/adityadevraj699/revolutionizing-java-concurrency)
+* 🔗 [Blog: Next-Gen Java Concurrency Simplified](https://nextgenjavaconcurrency.adityadevraj699.online/)
+
+
 
