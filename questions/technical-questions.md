@@ -128,7 +128,15 @@ This ensures reproducibility and transparent validation.
 ### 11. What was the primary goal of your benchmarking effort?
 The primary goal was to compare the performance of **Java 19's Virtual Threads** against **Platform Threads** in a real-world, concurrent programming scenario. The focus was on demonstrating the scalability and efficiency of virtual threads in a multi-threaded application.
 (*Ref: Section 1.1*)
+
 ---
+
+## 📁 Related Resources
+
+* 🔗 [GitHub Code: Virtual vs Platform Thread Benchmarks](https://github.com/adityadevraj699/revolutionizing-java-concurrency)
+* 🔗 [Blog: Next-Gen Java Concurrency Simplified](https://nextgenjavaconcurrency.adityadevraj699.online/)
+
+
 
 
 
