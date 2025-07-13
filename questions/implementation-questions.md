@@ -165,4 +165,11 @@ The introduction of **virtual threads** via Project Loom has significant implica
 
 📖 *Reference: Sections 4.2, 4.3, 4.6, 5.1, and 5.3 of the paper*
 
+
 ---
+
+## 📁 Related Resources
+
+* 🔗 [GitHub Code: Virtual vs Platform Thread Benchmarks](https://github.com/adityadevraj699/revolutionizing-java-concurrency)
+* 🔗 [Blog: Next-Gen Java Concurrency Simplified](https://nextgenjavaconcurrency.adityadevraj699.online/)
+
