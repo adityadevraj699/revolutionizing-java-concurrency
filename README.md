@@ -116,17 +116,24 @@ Blocked during   Blocked during   Blocked during   Blocked during
 
 ## 👨‍💻 Authors
 
-**Aditya Kumar**
-Final Year Student – B.Tech in Computer Science
-Meerut Institute of Technology, India
-📧 [aditya.kumar1.cs.2022@mitmeerut.ac.in](mailto:aditya.kumar1.cs.2022@mitmeerut.ac.in)
-🌐 [Portfolio Website](https://adityadevraj699.online)
-
-**Amol Sharma**
-Faculty Mentor
-Department of Computer Science
-Meerut Institute of Technology, India
-📧 [amol.sharma@mitmeerut.ac.in](mailto:amol.sharma@mitmeerut.ac.in)
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>Aditya Kumar</strong><br>
+      Final Year Student – B.Tech in Computer Science<br>
+      Meerut Institute of Technology, India<br>
+      📧 <a href="mailto:aditya.kumar1.cs.2022@mitmeerut.ac.in">aditya.kumar1.cs.2022@mitmeerut.ac.in</a><br>
+      🌐 <a href="https://adityadevraj699.online" target="_blank">Portfolio Website</a>
+    </td>
+    <td width="50%" valign="top">
+      <strong>Amol Sharma</strong><br>
+      Faculty Mentor<br>
+      Department of Computer Science<br>
+      Meerut Institute of Technology, India<br>
+      📧 <a href="mailto:amol.sharma@mitmeerut.ac.in">amol.sharma@mitmeerut.ac.in</a>
+    </td>
+  </tr>
+</table>
 
 ---
 
