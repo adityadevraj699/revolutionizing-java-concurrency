@@ -73,9 +73,9 @@ Blocked during   Blocked during   Blocked during   Blocked during
   I/O wait         I/O wait         I/O wait         I/O wait
 ```
 
-⛔ One thread per request — direct 1:1 mapping with OS threads
-⛔ High memory footprint (\~1MB per thread)
-⛔ Expensive context switching and poor scalability under load
+* ⛔ One thread per request — direct 1:1 mapping with OS threads
+* ⛔ High memory footprint (\~1MB per thread)
+* ⛔ Expensive context switching and poor scalability under load
 
 ---
 
