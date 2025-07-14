@@ -120,7 +120,7 @@ Blocked during   Blocked during   Blocked during   Blocked during
   <tr>
     <td width="50%" valign="top" style="padding-right: 30px; font-family: sans-serif; line-height: 1.6;">
       <strong style="font-size: 16px;">Aditya Kumar</strong><br>
-      Final Year Student – B.Tech in Computer Science<br>
+      Final Year Student – B.Tech in Computer Science & Engineering<br>
       Meerut Institute of Technology, Meerut (Uttar Pradesh, India)<br>
       📧 <a href="mailto:aditya.kumar1.cs.2022@mitmeerut.ac.in" style="color: inherit;">Email</a><br>
       🔗 <a href="https://adityadevraj699.online" target="_blank" style="color: inherit;">Portfolio Website</a>
@@ -128,7 +128,7 @@ Blocked during   Blocked during   Blocked during   Blocked during
     <td width="50%" valign="top" style="font-family: sans-serif; line-height: 1.6;">
       <strong style="font-size: 16px;">Amol Sharma</strong><br>
       Faculty Mentor<br>
-      Department of Computer Science<br>
+      Department of Computer Science & Engineerng<br>
       Meerut Institute of Technology, Meerut (Uttar Pradesh, India)<br>
       📧 <a href="mailto:amol.sharma@mitmeerut.ac.in" style="color: inherit;">Email</a>
     </td>
