@@ -118,19 +118,19 @@ Blocked during   Blocked during   Blocked during   Blocked during
 
 <table>
   <tr>
-    <td width="50%" valign="top" style="padding-right: 30px;">
-      <strong>Aditya Kumar</strong><br>
+    <td width="50%" valign="top" style="padding-right: 30px; font-family: sans-serif; line-height: 1.6;">
+      <strong style="font-size: 16px;">Aditya Kumar</strong><br>
       Final Year Student – B.Tech in Computer Science<br>
       Meerut Institute of Technology, India<br>
-      📧 <a href="mailto:aditya.kumar1.cs.2022@mitmeerut.ac.in">Email</a><br>
-      🔗 <a href="https://adityadevraj699.online" target="_blank">Portfolio Website</a>
+      📧 <a href="mailto:aditya.kumar1.cs.2022@mitmeerut.ac.in" style="color: inherit;">Email</a><br>
+      🔗 <a href="https://adityadevraj699.online" target="_blank" style="color: inherit;">Portfolio Website</a>
     </td>
-    <td width="50%" valign="top">
-      <strong>Amol Sharma</strong><br>
+    <td width="50%" valign="top" style="font-family: sans-serif; line-height: 1.6;">
+      <strong style="font-size: 16px;">Amol Sharma</strong><br>
       Faculty Mentor<br>
       Department of Computer Science<br>
       Meerut Institute of Technology, India<br>
-      📧 <a href="mailto:amol.sharma@mitmeerut.ac.in">Email</a>
+      📧 <a href="mailto:amol.sharma@mitmeerut.ac.in" style="color: inherit;">Email</a>
     </td>
   </tr>
 </table>
