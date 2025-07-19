@@ -84,6 +84,15 @@ java --enable-preview -cp out ThreadBenchmark
 
 ---
 
+### 🧪 Pinning Analysis using Java Flight Recorder (JFR)
+
+```bash
+java --enable-preview \
+     -Djdk.tracePinnedThreads=full \
+     -XX:StartFlightRecording=filename=pinning.jfr,dumponexit=true \
+     -cp out GuaranteedPinningExample
+```
+
 ## 💡 Notes
 
 * These commands should be run from the root directory where your `.java` files and `out/` directory exist.
