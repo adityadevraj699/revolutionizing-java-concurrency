@@ -40,7 +40,3 @@ revolutionizing-java-concurrency/
 
 * 🔗 [GitHub Repo: Java Concurrency Benchmarks](https://github.com/adityadevraj699/revolutionizing-java-concurrency)
 * 🔗 [Blog: Java Virtual Threads Simplified](https://nextgenjavaconcurrency.adityadevraj699.online/)
-* 📄 [Research Paper: Revolutionizing Java Concurrency (PDF)](./paper/Research_Paper.pdf)
-* 📂 [Conceptual Questions](./questions/conceptual-questions.md)
-* 📂 [Benchmark Analysis](./questions/benchmark-analysis.md)
-* 📂 [Code Samples](./code/IoBoundVirtualVsPlatform.java)
