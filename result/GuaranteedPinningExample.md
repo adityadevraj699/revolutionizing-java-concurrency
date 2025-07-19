@@ -1,4 +1,4 @@
-# 📄 Pinning Observation Log (JFR Trace Output)
+### 📄 Pinning Observation Log (JFR Trace Output)
 
 | Timestamp   | Event Type     | Details                                                                 |
 |-------------|----------------|-------------------------------------------------------------------------|
@@ -10,14 +10,11 @@
 
 ---
 
-## 🧪 **Observation Summary**
-
+### 🧪 **Observation Summary**
 - Java Flight Recorder (JFR) was successfully started with default size.
 - Virtual thread execution began and attempted to perform a blocking I/O operation using `BufferedReader.readLine()`.
 - This causes **thread pinning**, a known limitation with virtual threads when using legacy blocking I/O.
 - The JVM traces this and logs data to `pinning.jfr`.
 
 > 🔍 **Note**: This output confirms that pinning behavior can be replicated and analyzed using JFR + `-Djdk.tracePinnedThreads=full`.
-
-[jfr]: https://docs.oracle.com/en/java/javase/17/jfapi/java-flight-recorder.html
 
