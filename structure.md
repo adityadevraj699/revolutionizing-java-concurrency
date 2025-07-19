@@ -1,34 +1,39 @@
 # 📁 Project Structure – Revolutionizing Java Concurrency
-
 ```yml
 revolutionizing-java-concurrency/
-├── README.md                           # Project overview
-├── structure.md                        # Directory and file organization
-├── how_to_run_java21_virtual_thread_tests.md   # 🔧 Run instructions (NEW)
+├── README.md                           # 📘 Project overview, objectives, and summary
+├── structure.md                        # 🗂️ Directory and file organization
+├── how_to_run_java21_virtual_thread_tests.md   # 🔧 Step-by-step guide to run Java 21 preview features
 │
-├── code/                               # 📂 Source code + results
-│   ├── benchmark_results.csv           # CSV export of benchmark metrics
-│   ├── CpuBoundComparison.java         # CPU-bound task benchmark
-│   ├── GraphExport.java                # Utility for exporting graphs
-│   ├── IoBoundVirtualVsPlatform.java   # I/O benchmark for thread types
-│   ├── MixedBenchmark.java             # Mixed workload test
-│   ├── ScopedValuesDemo.java           # Scoped value concurrency test
-│   ├── StructuredConcurrencyDemo.java  # Structured concurrency demo
-│   ├── ThreadBenchmark.java            # Basic thread benchmark test
-│   └── out/                            # Compiled `.class` files
+├── code/                               # 📂 Java source code and compiled output
+│   ├── benchmark_results.csv           # 📊 Exported benchmark metrics in CSV
+│   ├── CpuBoundComparison.java         # 🔥 CPU-bound benchmark: virtual vs platform threads
+│   ├── GraphExport.java                # 📈 Utility for exporting results to graphs
+│   ├── IoBoundVirtualVsPlatform.java   # 🌐 I/O-bound benchmark simulating DB/API calls
+│   ├── MixedBenchmark.java             # 🔄 Mixed workload test combining CPU and I/O
+│   ├── ScopedValuesDemo.java           # 🧵 ScopedValue concurrency use case demonstration
+│   ├── StructuredConcurrencyDemo.java  # 🌲 Structured concurrency demo with task scoping
+│   ├── ThreadBenchmark.java            # 🧪 Basic test comparing thread performance
+│   └── out/                            # 📦 Compiled `.class` files (javac output)
 │
-├── questions/                          # 📂 Analytical markdown responses
-│   ├── benchmark-analysis.md           # Interpretation of benchmark results
-│   ├── conceptual-questions.md         # Core concept explanations
-│   ├── decision-making-analysis.md     # Design/tech decision justification
-│   ├── implementation-questions.md     # Coding-specific questions answered
-│   ├── industry-comparison-virtual-threads.md  # Loom vs Industry alternatives
-│   ├── limitations-future-work.md      # Constraints + future scope
-│   ├── realworld-usecases.md           # Practical uses of virtual threads
-│   └── technical-questions.md          # Deep technical exploration
+├── questions/                          # 📂 Analytical markdown answers for report sections
+│   ├── benchmark-analysis.md           # 📈 In-depth analysis of performance results
+│   ├── conceptual-questions.md         # 📚 Definitions and core Java concurrency concepts
+│   ├── decision-making-analysis.md     # 💡 Justification for design/tech stack choices
+│   ├── implementation-questions.md     # 💻 Code-level implementation insights
+│   ├── industry-comparison-virtual-threads.md  # 🏭 Loom vs Go, Node.js, Kotlin, etc.
+│   ├── limitations-future-work.md      # ⚠️ Limitations of study and proposed future scope
+│   ├── realworld-usecases.md           # 🌍 Practical use cases of virtual threads
+│   └── technical-questions.md          # 🧠 Advanced technical deep-dives
 │
-├── result/                             # 📂 Benchmark execution results
-│   └── result.md                       # Output logs and measured performance
+├── result/                             # 📂 Benchmark execution result logs and markdowns
+│   ├── CpuBoundComparison.md           # Result of CPU-bound test execution
+│   ├── GraphExport.md                  # Output log of graph generation
+│   ├── IOMetricBenchmark.md            # Result of I/O-bound test execution
+│   ├── MixedBenchmark.md               # Mixed workload result
+│   ├── ScopedValuesDemo.md             # Output from ScopedValue example run
+│   ├── StructuredConcurrencyDemo.md    # Output from StructuredConcurrency example
+│   └── ThreadBenchmark.md              # Output from basic thread test
 ```
 
 ## 📁 Related Resources
