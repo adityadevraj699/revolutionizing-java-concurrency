@@ -1,12 +1,11 @@
-import java.time.Duration;
-import java.time.Instant;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadFactory;
 
 public class CpuBoundComparison {
 
-    static final int[] TASKS = {4, 6};
-    static final int PRIME_TO_CHECK = 15485863; // a large prime number
+    static final int[] TASKS = {4, 6}; // You can increase this if needed
+    static final int ITERATIONS_PER_TASK = 5000; // Increased workload
+    static final int PRIME_TO_CHECK = 15485863; // Still a large prime
 
     public static void main(String[] args) throws InterruptedException {
         System.out.println("=".repeat(25) + " CPU Benchmark Summary " + "=".repeat(25));
@@ -31,14 +30,15 @@ public class CpuBoundComparison {
         long[] times = new long[taskCount];
 
         Runnable[] tasks = new Runnable[taskCount];
-
         for (int i = 0; i < taskCount; i++) {
             final int index = i;
             tasks[i] = () -> {
-                Instant start = Instant.now();
-                isPrime(PRIME_TO_CHECK);
-                Instant end = Instant.now();
-                times[index] = Duration.between(start, end).toMillis();
+                long start = System.nanoTime();
+                for (int j = 0; j < ITERATIONS_PER_TASK; j++) {
+                    isPrime(PRIME_TO_CHECK);
+                }
+                long end = System.nanoTime();
+                times[index] = (end - start);
                 latch.countDown();
             };
         }
@@ -49,16 +49,15 @@ public class CpuBoundComparison {
         }
 
         latch.await();
-        long totalTime = 0;
-        for (long t : times) totalTime += t;
+        long totalTimeNanos = 0;
+        for (long t : times) totalTimeNanos += t;
 
-        long avgTimeMs = totalTime / taskCount;
-        double throughput = (taskCount * 1000.0) / totalTime;
+        long avgTimeMs = totalTimeNanos / taskCount / 1_000_000;
+        double throughput = totalTimeNanos == 0 ? 0 : (taskCount * 1_000_000_000.0) / totalTimeNanos;
 
         return new BenchmarkResult(avgTimeMs, throughput);
     }
 
-    // Simple primality check
     private static boolean isPrime(int num) {
         if (num <= 1) return false;
         if (num <= 3) return true;
