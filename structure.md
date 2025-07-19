@@ -1,6 +1,5 @@
 # 📁 Project Structure – Revolutionizing Java Concurrency
 
-=====================================
 
 ```yml
 revolutionizing-java-concurrency/
@@ -36,5 +35,3 @@ revolutionizing-java-concurrency/
 * 📂 [Conceptual Questions](./questions/conceptual-questions.md)
 * 📂 [Benchmark Analysis](./questions/benchmark-analysis.md)
 * 📂 [Code Samples](./code/IoBoundVirtualVsPlatform.java)
-
-```
