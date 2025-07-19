@@ -84,7 +84,7 @@ java --enable-preview -cp out ThreadBenchmark
 
 ---
 
-### 🧪 Pinning Analysis using Java Flight Recorder (JFR)
+### ▶️ Pinning Analysis using Java Flight Recorder (JFR)
 
 ```bash
 java --enable-preview \
@@ -92,6 +92,8 @@ java --enable-preview \
      -XX:StartFlightRecording=filename=pinning.jfr,dumponexit=true \
      -cp out GuaranteedPinningExample
 ```
+
+---
 
 ## 💡 Notes
 
