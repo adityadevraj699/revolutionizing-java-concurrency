@@ -57,3 +57,14 @@
 | Live Threads               | 16              | 16             |
 | Total Threads Created      | 2000            | 0              |
 | Memory Used                | -53298 KB       | 5002 KB        |
+
+---
+
+## 🧠 Summary Insights
+
+- **Virtual Threads consistently outperform Platform Threads** in terms of throughput across all request levels.
+- **Latency remains stable** and comparable between the two, with slight advantage to virtual threads in higher load scenarios.
+- **Memory usage** is significantly lower for Virtual Threads, highlighting their scalability.
+- **Thread creation time** remains negligible in both, but Virtual Threads handle bulk creation more efficiently.
+
+---

@@ -1,39 +1,52 @@
 # 📁 Project Structure – Revolutionizing Java Concurrency
+
 ```yml
-revolutionizing-java-concurrency/
-├── README.md                           # 📘 Project overview, objectives, and summary
-├── structure.md                        # 🗂️ Directory and file organization
-├── how_to_run_java21_virtual_thread_tests.md   # 🔧 Step-by-step guide to run Java 21 preview features
+├── README.md                          # Project overview and instructions
+├── how_to_run_java21_virtual_thread_tests.md  # Guide to running benchmarks
+├── structure.md                       # Project structure and organization
 │
-├── code/                               # 📂 Java source code and compiled output
-│   ├── benchmark_results.csv           # 📊 Exported benchmark metrics in CSV
-│   ├── CpuBoundComparison.java         # 🔥 CPU-bound benchmark: virtual vs platform threads
-│   ├── GraphExport.java                # 📈 Utility for exporting results to graphs
-│   ├── IoBoundVirtualVsPlatform.java   # 🌐 I/O-bound benchmark simulating DB/API calls
-│   ├── MixedBenchmark.java             # 🔄 Mixed workload test combining CPU and I/O
-│   ├── ScopedValuesDemo.java           # 🧵 ScopedValue concurrency use case demonstration
-│   ├── StructuredConcurrencyDemo.java  # 🌲 Structured concurrency demo with task scoping
-│   ├── ThreadBenchmark.java            # 🧪 Basic test comparing thread performance
-│   └── out/                            # 📦 Compiled `.class` files (javac output)
+├───Analysis VirtualVM/               # 🔍 Visual analysis from VisualVM
+│   ├── CpuBoundComparison.png
+│   ├── IOMetricBenchmark.png
+│   ├── MemoryUtilizationTest.png
+│   ├── ScopedValuesDemo.png
+│   ├── StructuredConcurrencyDemo.png
+│   └── ThreadBenchmark.png
 │
-├── questions/                          # 📂 Analytical markdown answers for report sections
-│   ├── benchmark-analysis.md           # 📈 In-depth analysis of performance results
-│   ├── conceptual-questions.md         # 📚 Definitions and core Java concurrency concepts
-│   ├── decision-making-analysis.md     # 💡 Justification for design/tech stack choices
-│   ├── implementation-questions.md     # 💻 Code-level implementation insights
-│   ├── industry-comparison-virtual-threads.md  # 🏭 Loom vs Go, Node.js, Kotlin, etc.
-│   ├── limitations-future-work.md      # ⚠️ Limitations of study and proposed future scope
-│   ├── realworld-usecases.md           # 🌍 Practical use cases of virtual threads
-│   └── technical-questions.md          # 🧠 Advanced technical deep-dives
+├───code/                             # 💻 Source code and outputs
+│   ├── benchmark_results.csv         # CSV data used in plotting
+│   ├── CpuBoundComparison.java
+│   ├── GraphExport.java
+│   ├── GuaranteedPinningExample.java
+│   ├── IOMetricBenchmark.java
+│   ├── MemoryUtilizationTest.java
+│   ├── MixedBenchmark.java
+│   ├── ScopedValuesDemo.java
+│   ├── StructuredConcurrencyDemo.java
+│   ├── ThreadBenchmark.java
+│   ├── pinning.jfr                   # Java Flight Recorder data
+│   └───out/                          # (Compiled outputs or classes)
 │
-├── result/                             # 📂 Benchmark execution result logs and markdowns
-│   ├── CpuBoundComparison.md           # Result of CPU-bound test execution
-│   ├── GraphExport.md                  # Output log of graph generation
-│   ├── IOMetricBenchmark.md            # Result of I/O-bound test execution
-│   ├── MixedBenchmark.md               # Mixed workload result
-│   ├── ScopedValuesDemo.md             # Output from ScopedValue example run
-│   ├── StructuredConcurrencyDemo.md    # Output from StructuredConcurrency example
-│   └── ThreadBenchmark.md              # Output from basic thread test
+├───questions/                        # ❓ Q&A and theoretical discussions
+│   ├── benchmark-analysis.md
+│   ├── conceptual-questions.md
+│   ├── decision-making-analysis.md
+│   ├── implementation-questions.md
+│   ├── industry-comparison-virtual-threads.md
+│   ├── limitations-future-work.md
+│   ├── realworld-usecases.md
+│   └── technical-questions.md
+│
+└───result/                           # 📊 Result summaries from benchmarks
+    ├── CpuBoundComparison.md
+    ├── GraphExport.md
+    ├── GuaranteedPinningExample.md
+    ├── IOMetricBenchmark.md
+    ├── MemoryUtilizationTest.md
+    ├── MixedBenchmark.md
+    ├── ScopedValuesDemo.md
+    ├── StructuredConcurrencyDemo.md
+    └── ThreadBenchmark.md
 ```
 
 ## 📁 Related Resources
