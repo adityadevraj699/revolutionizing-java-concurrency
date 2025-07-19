@@ -103,31 +103,6 @@ Blocked during   Blocked during   Blocked during   Blocked during
 
 ---
 
-### ▶️ How to Compile and Run the Code (Using Terminal)
-
-**Step 1: Compile**
-
-```bash
-javac --enable-preview --release 21 -d out src/ScopedValuesDemo.java
-```
-
-**Step 2: Run**
-
-```bash
-java --enable-preview -cp out ScopedValuesDemo
-```
-
-> 📁 `src/ScopedValuesDemo.java` = Path to your source file
-> 📂 `out/` = Folder where compiled `.class` files will go
-
----
-
-### 🧠 Why This Is Needed?
-
-Because features like `ScopedValue`, `Virtual Threads`, and `StructuredTaskScope` are still in **preview** mode in Java 21 — Java needs the `--enable-preview` flag both during **compilation** and **execution**.
-
----
-
 ## 📝 Key Research Highlights
 
 * Achieved **11× higher throughput** in I/O-intensive scenarios using virtual threads.
