@@ -10,89 +10,84 @@
 
 ---
 
-## 📊 1. CPU-Bound Benchmark (CpuBoundComparison.java)
+## 📊 1. CPU-Bound Benchmark (`CpuBoundComparison.java`)
 
-| Tasks | Metric              | Platform Threads | Virtual Threads | Difference |
+| Tasks | Metric              | Platform Threads | Virtual Threads  | Difference |
 |-------|---------------------|------------------|------------------|------------|
-| 4     | Tasks/sec           | Infinity         | Infinity         | NaN%       |
-|       | Avg Execution (ms)  | 0                | 0                | NaN%       |
-| 6     | Tasks/sec           | Infinity         | Infinity         | NaN%       |
-|       | Avg Execution (ms)  | 0                | 0                | NaN%       |
+| 4     | Tasks/sec           | 45.7             | 62.6             | +36.8%     |
+|       | Avg Execution (ms)  | 21               | 15               | +36.8%     |
+| 6     | Tasks/sec           | 48.9             | 50.9             | +4.0%      |
+|       | Avg Execution (ms)  | 20               | 19               | +4.0%      |
 
-> ⚠️ Looks like a logic error or skipped benchmarking calculation (divide by zero?).
+✅ **Virtual Threads show slight gains** in CPU-bound workloads, especially with fewer threads.
 
 ---
 
-## 🌐 2. IO-Bound Benchmark (IoBoundVirtualVsPlatform.java)
+## 🌐 2. IO-Bound Benchmark (`IoBoundVirtualVsPlatform.java`)
 
 | Concurrent Requests | Metric            | Platform Threads | Virtual Threads |
 |---------------------|-------------------|------------------|-----------------|
-| 1000                | Throughput (r/s)  | 4484             | 4854            |
+| 1,000               | Throughput (r/s)  | 4,484            | 4,854           |
 |                     | Avg Latency (ms)  | 0                | 0               |
-| 10000               | Throughput (r/s)  | 9157             | 41666           |
+| 10,000              | Throughput (r/s)  | 9,157            | 41,666          |
 |                     | Avg Latency (ms)  | 0                | 0               |
-| 50000               | Throughput (r/s)  | 10535            | 166666          |
+| 50,000              | Throughput (r/s)  | 10,535           | 166,666         |
 |                     | Avg Latency (ms)  | 0                | 0               |
 
-✅ **Virtual Threads scale significantly better at higher concurrency**.
+✅ **Virtual Threads scale significantly better** as concurrency increases.
 
 ---
 
-## 🔁 3. Mixed Benchmark (MixedBenchmark.java)
+## 🔁 3. Mixed Benchmark (`MixedBenchmark.java`)
 
 ### ➤ Platform Threads
-- Total Time: 5831 ms  
-- Throughput: 1714 tasks/sec  
-- Memory Used: 28419 KB
+- ⏱️ Total Time: `5,831 ms`  
+- ⚡ Throughput: `1,714 tasks/sec`  
+- 💾 Memory Used: `28,419 KB`
 
 ### ➤ Virtual Threads
-- Total Time: 1273 ms  
-- Throughput: 7855 tasks/sec  
-- Memory Used: 26074 KB
+- ⏱️ Total Time: `1,273 ms`  
+- ⚡ Throughput: `7,855 tasks/sec`  
+- 💾 Memory Used: `26,074 KB`
 
-✅ Virtual threads are **4.5x faster** and more memory-efficient.
-
----
-
-## 🌲 4. Structured Concurrency (StructuredConcurrencyDemo.java)
-
-| Thread Type | Thread Count | Startup Time (ms) |
-|-------------|--------------|--------------------|
-| Platform    | 1000         | 75                 |
-| Virtual     | 1000         | 22                 |
-| Platform    | 10000        | 634                |
-| Virtual     | 10000        | 14                 |
-| Platform    | 50000        | 3129               |
-| Virtual     | 50000        | 28                 |
-| Platform    | 100000       | 6535               |
-| Virtual     | 100000       | 28                 |
-
-✅ Virtual threads maintain consistent startup time — even at **100,000** threads.
+✅ Virtual threads are **~4.5x faster** and use **~8% less memory**.
 
 ---
 
-## 🧬 5. Scoped Values Benchmark (ScopedValuesDemo.java)
+## 🌲 4. Structured Concurrency (`StructuredConcurrencyDemo.java`)
 
-| Thread Type | Scenario | Avg (ms) | P95 (ms) | Throughput |
-|-------------|----------|----------|----------|-------------|
-| Platform    | I/O      | 4        | 5        | 11933       |
-| Virtual     | I/O      | 33       | 46       | 93457       |
-| Platform    | CPU      | 0        | 0        | 14044       |
-| Virtual     | CPU      | 0        | 0        | 1666666     |
+| Threads     | Platform Threads (ms) | Virtual Threads (ms) |
+|-------------|------------------------|-----------------------|
+| 1,000       | 75                     | 22                    |
+| 10,000      | 634                    | 14                    |
+| 50,000      | 3,129                  | 28                    |
+| 100,000     | 6,535                  | 28                    |
 
-✅ Scoped values work efficiently with **virtual threads**, especially in **I/O-intensive tasks**.
+✅ Virtual threads show **constant startup time**, even at **100,000 threads**.
 
 ---
 
-## 🧵 6. Thread Benchmark (ThreadBenchmark.java)
+## 🧬 5. Scoped Values Benchmark (`ScopedValuesDemo.java`)
 
-### Traditional Threads
-- Total Time: 10979 ms
+| Workload | Thread Type | Avg (ms) | P95 (ms) | Throughput |
+|----------|-------------|----------|----------|------------|
+| I/O      | Platform    | 4        | 5        | 11,933     |
+|          | Virtual     | 33       | 46       | 93,457     |
+| CPU      | Platform    | 0        | 0        | 14,044     |
+|          | Virtual     | 0        | 0        | 1,666,666  |
 
-### Virtual Threads
-- Total Time: 221 ms
+✅ Scoped values are highly efficient with virtual threads, especially in I/O tasks.
 
-✅ Virtual threads executed the same task in **~2%** of the time compared to traditional threads.
+---
+
+## 🧵 6. Thread Benchmark (`ThreadBenchmark.java`)
+
+| Thread Type       | Total Execution Time |
+|-------------------|----------------------|
+| Platform Threads  | 10,979 ms            |
+| Virtual Threads   | 221 ms               |
+
+✅ Virtual Threads are **~50x faster** for thread startup and completion.
 
 ---
 
@@ -100,19 +95,22 @@
 
 | Test Type         | Virtual Threads Win? | Key Advantage                      |
 |-------------------|----------------------|------------------------------------|
-| CPU-Bound         | ⚠️ Inconclusive       | Logic issue                        |
-| IO-Bound          | ✅ Yes                | Scalable throughput                |
-| Mixed Workload    | ✅ Yes                | Faster + less memory               |
-| Structured Conc.  | ✅ Yes                | Fast thread startup                |
-| Scoped Values     | ✅ Yes                | Efficient isolation/context use    |
-| Thread Benchmark  | ✅ Yes                | Huge speed gain (over 50x faster)  |
+| CPU-Bound         | ✅ Slight            | Lower overhead, mild gain          |
+| IO-Bound          | ✅ Yes               | Scalable throughput                |
+| Mixed Workload    | ✅ Yes               | Faster + less memory               |
+| Structured Conc.  | ✅ Yes               | Fast thread startup                |
+| Scoped Values     | ✅ Yes               | Efficient isolation/context use    |
+| Thread Benchmark  | ✅ Yes               | Huge speed gain (over 50x faster)  |
 
 ---
 
 🧠 **Conclusion:**  
-Virtual Threads in Java 21 (Loom) offer **massive performance improvements**, especially in high-concurrency and I/O-heavy workloads. They consume fewer resources, launch faster, and maintain clean structured concurrency via `StructuredTaskScope` and `ScopedValue`.
+Java 21's Virtual Threads (Project Loom) bring **game-changing concurrency** to the JVM. They are ideal for:
+- High-throughput web servers
+- Massive I/O concurrency
+- Lightweight task parallelism  
+They simplify threading, avoid callback hell, and make structured concurrency both **clean and performant**.
 
 ---
 
-📁 Generated on: `Windows 11 • Temurin OpenJDK 21.0.6 • July 2025`
-
+📁 _Generated on: `Windows 11 • Temurin OpenJDK 21.0.6 • July 2025`_
