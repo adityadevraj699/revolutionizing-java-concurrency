@@ -1,5 +1,6 @@
-Traditional Threads Benchmark:
-Total time: 11168 ms
+# 🆚 Traditional vs Virtual Threads — Benchmark Summary
 
-Virtual Threads Benchmark:
-Total time: 168 ms
+| Thread Type         | Total Time (ms) |
+|---------------------|-----------------|
+| Traditional Threads | 11,168          |
+| Virtual Threads     | 168             |

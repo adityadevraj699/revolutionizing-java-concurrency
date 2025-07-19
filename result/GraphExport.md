@@ -1,4 +1,8 @@
-1000 tasks benchmarked ? Platform: 335 ms, Virtual: 53 ms
-5000 tasks benchmarked ? Platform: 1607 ms, Virtual: 55 ms
-10000 tasks benchmarked ? Platform: 3233 ms, Virtual: 67 ms
-20000 tasks benchmarked ? Platform: 6430 ms, Virtual: 64 ms
+# ⚙️ CPU Benchmark Results — Large Task Sets
+
+| Tasks Benchmarked | Platform Threads (ms) | Virtual Threads (ms) |
+|-------------------|------------------------|------------------------|
+| 1,000             | 335                    | 53                     |
+| 5,000             | 1,607                  | 55                     |
+| 10,000            | 3,233                  | 67                     |
+| 20,000            | 6,430                  | 64                     |
