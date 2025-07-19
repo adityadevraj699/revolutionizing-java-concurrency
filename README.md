@@ -89,7 +89,7 @@ Blocked during   Blocked during   Blocked during   Blocked during
 
 ---
 
-## 🧪 Technologies Used
+# 🤪 Technologies Used
 
 * **Java 21** (Project Loom Preview Features)
 * **VisualVM**, **JMeter**, **Java Flight Recorder (JFR)**, **htop**
@@ -100,6 +100,31 @@ Blocked during   Blocked during   Blocked during   Blocked during
 > ⚙️ **Note**:
 > To run the code examples in this project, **you only need Java 21 installed**.
 > No additional setup is required — just compile and run!
+
+---
+
+### ▶️ How to Compile and Run the Code (Using Terminal)
+
+**Step 1: Compile**
+
+```bash
+javac --enable-preview --release 21 -d out src/ScopedValuesDemo.java
+```
+
+**Step 2: Run**
+
+```bash
+java --enable-preview -cp out ScopedValuesDemo
+```
+
+> 📁 `src/ScopedValuesDemo.java` = Path to your source file
+> 📂 `out/` = Folder where compiled `.class` files will go
+
+---
+
+### 🧠 Why This Is Needed?
+
+Because features like `ScopedValue`, `Virtual Threads`, and `StructuredTaskScope` are still in **preview** mode in Java 21 — Java needs the `--enable-preview` flag both during **compilation** and **execution**.
 
 ---
 
