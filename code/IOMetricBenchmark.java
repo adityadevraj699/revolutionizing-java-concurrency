@@ -1,23 +1,25 @@
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadMXBean;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.*;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ThreadFactory;
+import java.lang.management.ManagementFactory; // JVM thread management tools
+import java.lang.management.ThreadMXBean;       // Used to get thread stats
+import java.time.Duration;                      // Used to measure elapsed time
+import java.time.Instant;                       // Current timestamp
+import java.util.*;                              // Utility classes like List, Collections
+import java.util.concurrent.CountDownLatch;     // Thread synchronization tool
+import java.util.concurrent.ThreadFactory;      // To create platform or virtual threads
 
 public class IOMetricBenchmark {
 
     public static void main(String[] args) throws InterruptedException {
-        int[] requests = {100, 500, 1000, 2000};
+        int[] requests = {100, 500, 1000, 2000}; // Define workloads for testing
 
+        // Header for output
         System.out.printf("%-20s %-20s %-20s %-20s%n", "Requests", "Metric", "Platform Thread", "Virtual Thread");
         System.out.println("--------------------------------------------------------------------------------");
 
-        for (int threadCount : requests) {
-            Metrics platformMetrics = runBenchmark(threadCount, false);
-            Metrics virtualMetrics = runBenchmark(threadCount, true);
+        for (int threadCount : requests) { // Loop through each test case
+            Metrics platformMetrics = runBenchmark(threadCount, false); // Run with platform threads
+            Metrics virtualMetrics = runBenchmark(threadCount, true);   // Run with virtual threads
 
+            // Print results for throughput and latency
             System.out.printf("%-20d %-20s %-20d %-20d%n", threadCount, "Throughput (r/s)",
                     platformMetrics.throughput, virtualMetrics.throughput);
 
@@ -47,63 +49,68 @@ public class IOMetricBenchmark {
     }
 
     private static Metrics runBenchmark(int threadCount, boolean isVirtual) throws InterruptedException {
-        CountDownLatch latch = new CountDownLatch(threadCount);
-        List<Long> latencies = Collections.synchronizedList(new ArrayList<>());
+        CountDownLatch latch = new CountDownLatch(threadCount); // Waits until all threads finish
+        List<Long> latencies = Collections.synchronizedList(new ArrayList<>()); // Store latencies
 
+        // Choose thread type: virtual or platform
         ThreadFactory threadFactory = isVirtual
                 ? Thread.ofVirtual().name("VThread-", 0).factory()
                 : Thread.ofPlatform().name("PThread-", 0).factory();
 
-        // Monitoring setup
+        // Monitoring setup: count threads and memory before
         ThreadMXBean threadBean = ManagementFactory.getThreadMXBean();
         long threadsBefore = threadBean.getTotalStartedThreadCount();
         int liveBefore = threadBean.getThreadCount();
 
-        Runtime runtime = Runtime.getRuntime();
-        long memoryBeforeKB = (runtime.totalMemory() - runtime.freeMemory()) / 1024;
+        Runtime runtime = Runtime.getRuntime(); // JVM runtime
+        long memoryBeforeKB = (runtime.totalMemory() - runtime.freeMemory()) / 1024; // Used memory before
 
+        // Task for each thread to run
         Runnable task = () -> {
-            long start = System.nanoTime();
+            long start = System.nanoTime(); // Start time
             try {
-                simulateIO();
+                simulateIO(); // Simulate I/O delay
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
+                Thread.currentThread().interrupt(); // Restore interrupt flag
             } finally {
-                long latency = Duration.ofNanos(System.nanoTime() - start).toMillis();
-                latencies.add(latency);
-                latch.countDown();
+                long latency = Duration.ofNanos(System.nanoTime() - start).toMillis(); // Time taken
+                latencies.add(latency); // Add to list
+                latch.countDown(); // Mark this thread done
             }
         };
 
-        List<Thread> threads = new ArrayList<>();
-        Instant creationStart = Instant.now();
+        List<Thread> threads = new ArrayList<>(); // To hold all threads
+        Instant creationStart = Instant.now(); // Record thread creation start
         for (int i = 0; i < threadCount; i++) {
-            threads.add(threadFactory.newThread(task));
+            threads.add(threadFactory.newThread(task)); // Create threads
         }
-        Instant creationEnd = Instant.now();
-        long creationDuration = Duration.between(creationStart, creationEnd).toMillis();
+        Instant creationEnd = Instant.now(); // Thread creation end
+        long creationDuration = Duration.between(creationStart, creationEnd).toMillis(); // Time to create threads
 
-        Instant start = Instant.now();
+        Instant start = Instant.now(); // Benchmark start
         for (Thread thread : threads) {
-            thread.start();
+            thread.start(); // Start all threads
         }
 
-        latch.await();
-        Instant end = Instant.now();
+        latch.await(); // Wait until all threads complete
+        Instant end = Instant.now(); // Benchmark end
 
-        long totalDurationMillis = Duration.between(start, end).toMillis();
-        if (totalDurationMillis == 0) totalDurationMillis = 1;
-        long throughput = (threadCount * 1000L) / totalDurationMillis;
+        long totalDurationMillis = Duration.between(start, end).toMillis(); // Total execution time
+        if (totalDurationMillis == 0) totalDurationMillis = 1; // Avoid division by zero
+        long throughput = (threadCount * 1000L) / totalDurationMillis; // Requests per second
 
+        // Latency calculations
         double avg = latencies.stream().mapToLong(Long::longValue).average().orElse(0);
         Collections.sort(latencies);
         double p95 = latencies.get((int) (latencies.size() * 0.95) - 1);
         double p99 = latencies.get((int) (latencies.size() * 0.99) - 1);
 
+        // Get updated thread and memory stats
         long threadsAfter = threadBean.getTotalStartedThreadCount();
         int liveAfter = threadBean.getThreadCount();
         long memoryAfterKB = (runtime.totalMemory() - runtime.freeMemory()) / 1024;
 
+        // Return metrics for this test
         return new Metrics(
                 throughput,
                 avg,
@@ -117,18 +124,19 @@ public class IOMetricBenchmark {
     }
 
     private static void simulateIO() throws InterruptedException {
-        Thread.sleep(150); // Simulate IO latency
+        Thread.sleep(150); // Simulate a blocking I/O delay (150ms)
     }
 
+    // Metrics class to hold result data
     static class Metrics {
-        long throughput;
-        double avgLatency;
-        double p95Latency;
-        double p99Latency;
-        long creationTimeMillis;
-        int totalThreadsCreated;
-        int liveThreads;
-        int memoryUsedKB;
+        long throughput;              // Requests per second
+        double avgLatency;           // Average latency in ms
+        double p95Latency;           // 95th percentile latency
+        double p99Latency;           // 99th percentile latency
+        long creationTimeMillis;     // Thread creation time in ms
+        int totalThreadsCreated;     // Total threads created during run
+        int liveThreads;             // Live threads after completion
+        int memoryUsedKB;            // Memory used in KB
 
         public Metrics(long throughput, double avgLatency, double p95Latency, double p99Latency,
                        long creationTimeMillis, int totalThreadsCreated, int liveThreads, int memoryUsedKB) {
