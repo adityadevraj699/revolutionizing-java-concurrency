@@ -1,67 +1,85 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.concurrent.*;
+import java.io.FileWriter; // CSV file likhne ke liye
+import java.io.IOException; // IOException handle karne ke liye
+import java.time.Duration; // Duration calculate karne ke liye
+import java.time.Instant; // Time capture karne ke liye
+import java.util.concurrent.*; // Threading-related classes
 
 public class GraphExport {
 
-    // Define different task counts to benchmark
+    // 📊 Task counts jo benchmark ke liye use honge
     static final int[] TASK_COUNTS = {1000, 5000, 10000, 20000};
 
     public static void main(String[] args) throws InterruptedException, IOException {
-        try ( // Create the CSV file and write headers
-                FileWriter writer = new FileWriter("benchmark_results.csv")) {
+        try (
+            // ✅ CSV file create karo aur header likho
+            FileWriter writer = new FileWriter("benchmark_results.csv")
+        ) {
             writer.write("ThreadType,TaskCount,Duration(ms),Throughput(tasks/sec),Memory(KB)\n");
-            // Run for each task count
+
+            // 🔁 Har task count ke liye test run karo
             for (int count : TASK_COUNTS) {
-                // Platform Thread Benchmark
+
+                // 🧵 Platform threads ke saath benchmark run karo
                 long platformTime = runBenchmark(
-                        Executors.newFixedThreadPool(100), count, writer, "Platform");
-                
-                // Virtual Thread Benchmark
+                        Executors.newFixedThreadPool(100), // 100 platform threads
+                        count, writer, "Platform");
+
+                // 🧵 Virtual threads ke saath benchmark run karo
                 long virtualTime = runBenchmark(
-                        Executors.newVirtualThreadPerTaskExecutor(), count, writer, "Virtual");
-                
-                // Show status on console
+                        Executors.newVirtualThreadPerTaskExecutor(), // Loom virtual threads
+                        count, writer, "Virtual");
+
+                // 🖥️ Console pe result print karo
                 System.out.println(count + " tasks benchmarked — Platform: " + platformTime + " ms, Virtual: " + virtualTime + " ms");
             }
-            // Close the file
+            // 📁 FileWriter try-with-resources se khud close ho jaayega
         }
+
+        // ✅ Completion message
         System.out.println("✅ CSV file generated: benchmark_results.csv");
     }
 
+    // 🔁 Ye method benchmark run karta hai given executor ke saath
     static long runBenchmark(ExecutorService executor, int taskCount, FileWriter writer, String threadType)
             throws InterruptedException, IOException {
 
+        // 🔒 Saare threads complete hone ka wait karne ke liye latch
         CountDownLatch latch = new CountDownLatch(taskCount);
+
+        // ⏱️ Benchmark start time
         Instant start = Instant.now();
 
-        // Submit tasks
+        // 🔁 Saare tasks executor ke through submit karo
         for (int i = 0; i < taskCount; i++) {
             executor.submit(() -> {
                 try {
-                    Thread.sleep(30); // Simulate I/O
+                    Thread.sleep(30); // 💤 30ms ka simulated I/O delay
                 } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
+                    Thread.currentThread().interrupt(); // Thread ko interrupt hone par safe exit
                 } finally {
-                    latch.countDown();
+                    latch.countDown(); // 🧮 Ek task complete hua
                 }
             });
         }
 
-        latch.await(); // Wait for all to complete
+        // 🕰️ Wait till all tasks are done
+        latch.await();
+
+        // ⏱️ Benchmark end time
         Instant end = Instant.now();
+
+        // 🔚 Executor shutdown kar do
         executor.shutdown();
 
-        // Calculate metrics
-        long duration = Duration.between(start, end).toMillis();
-        long throughput = (taskCount * 1000L) / Math.max(1, duration);
-        long memoryKB = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024;
+        // 📊 Metrics calculate karo
+        long duration = Duration.between(start, end).toMillis(); // Total time in ms
+        long throughput = (taskCount * 1000L) / Math.max(1, duration); // Tasks per second
+        long memoryKB = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024; // Memory used
 
-        // Write row to CSV
+        // 📝 CSV row write karo
         writer.write(threadType + "," + taskCount + "," + duration + "," + throughput + "," + memoryKB + "\n");
 
+        // ⏱️ Duration return karo for console output
         return duration;
     }
 }
