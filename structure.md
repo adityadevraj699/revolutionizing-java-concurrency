@@ -4,6 +4,7 @@
 ├── README.md                          # Project overview and instructions
 ├── how_to_run_java21_virtual_thread_tests.md  # Guide to running benchmarks
 ├── structure.md                       # Project structure and organization
+├── FUTURE.md                         # 🔮 Advanced industry topics and future directions
 │
 ├───Analysis VirtualVM/               # 🔍 Visual analysis from VisualVM
 │   ├── CpuBoundComparison.png
