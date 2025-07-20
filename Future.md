@@ -1,4 +1,4 @@
-# VI.1 Future Directions: Advanced Industry Topics in Threading
+### Future Directions: Advanced Industry Topics in Threading
 
 Modern systems demand extreme scalability, energy efficiency, observability, and framework compatibility. While virtual threads introduced by Project Loom provide a powerful alternative to platform threads, real-world usage raises deeper architectural questions. This document outlines advanced topics for future exploration and integration within industry-grade systems.
 
