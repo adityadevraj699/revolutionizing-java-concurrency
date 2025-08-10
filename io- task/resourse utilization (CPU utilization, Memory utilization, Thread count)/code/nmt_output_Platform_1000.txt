@@ -1,0 +1,2 @@
+===== NMT Report for Platform with 1000 threads =====
+-                    Thread (reserved=22586KB, committed=874KB)

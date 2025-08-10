@@ -1,0 +1,124 @@
+{
+    "configurations": [
+        
+        {
+  "type": "java",
+  "name": "Launch IOResourceMonitor with VM Args",
+  "request": "launch",
+  "mainClass": "IOResourceMonitor",
+  "vmArgs": "-XX:NativeMemoryTracking=summary -XX:+UnlockDiagnosticVMOptions"
+}
+
+,
+{
+            "type": "java",
+            "name": "Launch ThreadComparisonWithJcmd with VM Args",
+            "request": "launch",
+            "mainClass": "ThreadComparisonWithJcmd",
+            "vmArgs": "-XX:NativeMemoryTracking=summary -XX:+UnlockDiagnosticVMOptions"
+        },
+        {
+  "type": "java",
+  "name": "Launch ThreadComparisonWithJcmd with VM Args",
+  "request": "launch",
+  "mainClass": "ThreadComparisonWithJcmd",  
+  "projectName": "code",
+  "vmArgs": "-XX:NativeMemoryTracking=summary -XX:+UnlockDiagnosticVMOptions"
+}
+,
+        {
+            "name": "Attach to Process",
+            "type": "jdk",
+            "request": "attach",
+            "processId": "${command:jdk.java.attachDebugger.pickProcess}"
+        },
+        {
+            "name": "Listen on Port",
+            "type": "jdk",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": "8000",
+            "listen": "true"
+        },
+        {
+            "type": "jdk",
+            "request": "launch",
+            "name": "Launch Java App"
+        },
+        {
+            "name": "Attach to Shared Memory",
+            "type": "jdk",
+            "request": "attach",
+            "sharedMemoryName": ""
+        },
+        {
+            "name": "Attach by com.sun.jdi.SharedMemoryListen",
+            "type": "jdk",
+            "request": "attach",
+            "listen": "true"
+        },
+        {
+            "type": "lldb",
+            "request": "attach",
+            "name": "Attach",
+            "pid": "${command:pickMyProcess}" // use ${command:pickProcess} to pick other users' processes
+        },
+        {
+            "type": "java",
+            "request": "attach",
+            "name": "Java",
+            "port": 5005,
+            "sourceRoots": []
+        },
+        {
+            "type": "pwa-msedge",
+            "name": "Launch Microsoft Edge",
+            "request": "launch",
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ],
+            "url": "c:\\Users\\Dell\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.9\\out\\startpage\\index.html", // Provide your project's url to finish configuring
+            "presentation": {
+                "hidden": true
+            }
+        },
+        {
+            "type": "pwa-msedge",
+            "name": "Launch Microsoft Edge in headless mode",
+            "request": "launch",
+            "runtimeArgs": [
+                "--headless",
+                "--remote-debugging-port=9222"
+            ],
+            "url": "c:\\Users\\Dell\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.9\\out\\startpage\\index.html", // Provide your project's url to finish configuring
+            "presentation": {
+                "hidden": true
+            }
+        },
+        {
+            "type": "vscode-edge-devtools.debug",
+            "name": "Open Edge DevTools",
+            "request": "attach",
+            "url": "c:\\Users\\Dell\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.9\\out\\startpage\\index.html", // Provide your project's url to finish configuring
+            "presentation": {
+                "hidden": true
+            }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Launch Edge Headless and attach DevTools",
+            "configurations": [
+                "Launch Microsoft Edge in headless mode",
+                "Open Edge DevTools"
+            ]
+        },
+        {
+            "name": "Launch Edge and attach DevTools",
+            "configurations": [
+                "Launch Microsoft Edge",
+                "Open Edge DevTools"
+            ]
+        }
+    ]
+}

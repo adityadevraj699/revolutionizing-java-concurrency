@@ -1,0 +1,2 @@
+===== NMT Report for Hybrid with 2000 threads =====
+-                    Thread (reserved=36961KB, committed=1725KB)
