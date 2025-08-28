@@ -1,4 +1,5 @@
-# 🚀 Revolutionizing Java Concurrency with Virtual Threads (Project Loom)
+# 🚀 From Threads to Loom: A Unified Benchmark of
+ Java Concurrency Models
 
 Welcome to the official GitHub documentation for the research project **"Revolutionizing Java Concurrency"**, focused on benchmarking and implementing **Virtual Threads** in Java 21+.
 
