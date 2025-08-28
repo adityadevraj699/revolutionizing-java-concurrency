@@ -111,7 +111,6 @@ Blocked during   Blocked during   Blocked during   Blocked during
 * Successfully simulated **50,000+ concurrent users** in chat systems and ERP login environments.
 * Identified and documented causes of **thread pinning** and how to avoid them using modern Java constructs.
 
-📘 For full technical documentation, code samples, benchmarks, and real-world applications, explore the [💻 Project Blog](https://nextgenjavaconcurrency.adityadevraj699.online)
 
 ---
 
