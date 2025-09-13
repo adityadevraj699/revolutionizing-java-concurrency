@@ -123,7 +123,7 @@ Blocked during   Blocked during   Blocked during   Blocked during
       Final Year Student – B.Tech in Computer Science & Engineering<br>
       Meerut Institute of Technology, Meerut (Uttar Pradesh, India)<br>
       📧 <a href="mailto:aditya.kumar1.cs.2022@mitmeerut.ac.in" style="color: inherit;">Email</a><br>
-      🔗 <a href="[https://adityadevraj699.online](https://aditya-portfolio-org.vercel.app/)" target="_blank" style="color: inherit;">Portfolio Website</a>
+      🔗 <a href="https://aditya-portfolio-org.vercel.app/" target="_blank" style="color: inherit;">Portfolio Website</a>
     </td>
     <td width="50%" valign="top" style="font-family: sans-serif; line-height: 1.6;">
       <strong style="font-size: 16px;">Amol Sharma</strong><br>
